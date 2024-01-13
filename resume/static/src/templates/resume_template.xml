@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="resume.TemplateOne">
+        <h1>Template One</h1>
+<!--        <div class="col-md-8 offset-md-2 shadow">-->
+<!--            <t t-foreach="data" t-as="mod" t-key="mod">-->
+<!--                <span t-out="mod.name" class="text-danger "/>-->
+<!--            </t>-->
+<!--            <span t-out="string"/>-->
+<!--        </div>-->
+    </t>
+</templates>

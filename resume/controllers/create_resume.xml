@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    <record id="my_page" model="website.page">-->
+    <!--        <field name="name">My Page</field>-->
+    <!--        <field name="type">qweb</field>-->
+    <!--        <field name="url">/my-page</field>-->
+    <!--        <field name="website_indexed" eval="False"/>-->
+    <!--        <field name="is_published">True</field>-->
+    <!--        <field name="key">website.my_page</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <t name="my page" t-name="my_page">-->
+    <!--                <t t-call="website.layout">-->
+    <!--                    <div class="container">-->
+    <!--                        <h1>Hello, Odoo 16!</h1>-->
+    <!--                        <p>Welcome to my custom page in Odoo 16. This is just a-->
+    <!--                            demo page.-->
+    <!--                        </p>-->
+    <!--                    </div>-->
+    <!--                </t>-->
+    <!--            </t>-->
+    <!--        </field>-->
+    <!--    data:image/png;base64,{{}}-->
+    <!--    </record>-->
+    <template id="resume.resume_category" name="Resume Job Category">
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <div class="col-md-4 offset-md-4  " id="resume_cat">
+                    <div class="card w-100 p-2 shadow rounded-0 rounded-end border-5 border-end-0 border-top-0 border-bottom-0 border-primary ">
+                        <div class="card-body ">
+                            <h5 class="card-title text-uppercase">define your job category</h5>
+                            <div class="mt-3">
+                                <form method="post">
+                                    <!--                                    action="/create/resume"-->
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="form-floating">
+                                        <input type="text"
+                                               class="form-control rounded-0 border-start-0 border-end-0 border-2 border-primary"
+                                               id="floatingCategory"
+                                               placeholder="Category"/>
+                                        <label for="floatingCategory">Category Name</label>
+                                    </div>
+                                    <button type="submit" id="click_cat"
+                                            class="btn btn-md mt-3 btn-primary float-end fw-bold">Next
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="resume.resume_create" name="Name">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container   my-1 p-2 ">
+                    <div class="col-lg-8 offset-lg-2 py-3">
+                        <form action="/create/resume" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="login" t-att-value="user_id.login "/>
+
+                            <div class="col-md-6 offset-md-3 mb-4 my-4 " id="resume_cat">
+                                <div class="card w-100 p-2 shadow rounded-0 rounded-end border-5 border-end-0 border-top-0 border-bottom-0 border-primary ">
+                                    <div class="card-body ">
+                                        <h5 class="card-title text-uppercase">define your job category</h5>
+                                        <div class="mt-3">
+                                            <div class="form-floating">
+                                                <input type="text" name="category"
+                                                       class="form-control rounded-0 border-start-0 border-end-0 border-2 border-primary"
+                                                       id="floatingCategory"
+                                                       placeholder="Category"/>
+                                                <label for="floatingCategory">Category Name</label>
+                                            </div>
+                                            <a href="#" id="click_cat"
+                                               class="btn btn-md mt-3 btn-primary float-end fw-bold">Next
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--           Resume Information -->
+                            <div class="d-none my-2 shadow p-4 border-2 rounded border-top border-primary" id="resume_information">
+                                <h1 class="text-center text-uppercase mb-5">Create Your Resume</h1>
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3 ">
+                                            <input type="text"
+                                                   name="resume_name"
+                                                   class="form-control rounded-0 border-primary border-end-0 border-start-0"
+                                                   id="floatingName"
+                                                   placeholder="Template Name ..."/>
+                                            <label for="floatingInput" class="">Template Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text"
+                                                   name="name"
+                                                   class="form-control rounded-0 "
+                                                   id="floatingName"
+                                                   placeholder="Name ..."/>
+                                            <label for="floatingInput">Name</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text"
+                                                   name="date_of_birth"
+                                                   class="form-control rounded-0"
+                                                   id="floatingBirthDate"
+                                                   onfocus="(this.type='date')"
+                                                   placeholder="Birth Date ..."/>
+                                            <label for="floatingInput">Date Of Birth</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" name="phone" id="floatingPhone"
+                                                   placeholder="Phone ..."/>
+                                            <label for="floatingInput">Phone Number</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" name="fname" id="floatingFname"
+                                                   placeholder="Father's Name ..."/>
+                                            <label for="floatingInput">Father's Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="floatingMail" name="mail"
+                                                   placeholder="example@gmail.com"/>
+                                            <label for="floatingPassword">Your's Email</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                                    <input type="file" name="image" class="form-control" id="inputGroupFile01"/>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" placeholder="Leave a comment here"
+                                              id="floatingaddress"
+                                              style="height: 100px" name="address"/>
+                                    <label for="floatingTextarea2">Address</label>
+                                </div>
+                                <div class="text-end">
+                                    <a href="#" id="click_resume_info" class="btn btn-primary btn-md fw-bold">
+                                        <i class="fa fa-long-arrow-right me-2" aria-hidden="true"/>Next
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!--Choose Template-->
+                            <div class="p-4 my-2  shadow d-none rounded-1 border-2 border-top border-primary" id="resume_temp">
+                                <h3 class="text-center text-uppercase">Select Template</h3>
+                                <div class="card-group">
+                                    <t t-call="resume.card_one"/>
+                                    <t t-call="resume.card_two"/>
+                                    <t t-call="resume.card_three"/>
+                                </div>
+                                <div class="mt-2 text-end">
+                                    <button type="submit" class="btn btn-lg btn-primary  fw-bold">
+                                        <i class="fa fa-circle-o-notch me-2" aria-hidden="true"/>Generate Resume
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="container" id="resume_template"/>
+
+
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="card_one" name="Card One">
+        <div class="card" aria-hidden="true">
+            <div class="card-body">
+                <div class="placeholder-glow mb-5">
+                    <span class="placeholder col-5 ms-2"/>
+                    <span class="placeholder col-4 float-end bg-success display-4"/>
+                </div>
+                <div class="card-text placeholder-glow">
+                    <div class="row">
+                        <div class="col-7">
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                        </div>
+                        <div class="col-5">
+                            <span class="placeholder col-12 display-1 bg-success" style="height:218px;"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="placeholder-glow mt-3">
+                    <span class="placeholder col-7 display-3 bg-success"/>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="template" value="one" id="box_one"
+                           t-att-checked="true"/>
+                    <label class="form-check-label float-end" for="box_one">
+                        Template One
+                    </label>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="card_two" name="Card Two">
+        <div class="card" aria-hidden="true">
+            <div class="card-body">
+                <div class="placeholder-glow mb-5">
+                    <span class="placeholder col-4 float-start display-4 bg-primary"/>
+                    <span class="placeholder col-5 ms-5"/>
+                </div>
+                <div class="card-text placeholder-wave">
+                    <div class="row">
+                        <div class="col-5">
+                            <span class="placeholder col-12 bg-primary display-1" style="height:218px;"/>
+                        </div>
+                        <div class="col-7">
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="placeholder-glow mt-3 text-end">
+                    <span class="placeholder col-7 display-3 bg-primary"/>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="two" name="template" id="box_two"/>
+                    <label class="form-check-label float-end" for="box_two">
+                        Template Two
+                    </label>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="card_three" name="Card Three">
+        <div class="card" aria-hidden="true">
+            <div class="card-body">
+                <div class="placeholder-glow mb-5">
+                    <span class="placeholder col-5 ms-1"/>
+                    <span class="placeholder col-4 float-end display-4"/>
+
+                </div>
+                <div class="card-text placeholder-glow">
+                    <div class="row">
+                        <div class="col-7">
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                            <span class="placeholder col-12"/>
+                        </div>
+                        <div class="col-5">
+                            <span class="placeholder col-12 display-1" style="height:218px;"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="placeholder-glow mt-3">
+                    <span class="placeholder col-6 display-3 bg-danger"/>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="three" name="template" id="box_three"/>
+                    <label class="form-check-label float-end" for="box_three">
+                        Template Three
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </template>
+
+
+    <record id="menu_my_page" model="website.menu">
+        <field name="name">Convert Resume</field>
+        <field name="url">/resume</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">60</field>
+    </record>
+</odoo>

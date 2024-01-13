@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_resume_form" model="ir.ui.view">
+            <field name="name">Resume Form Creation</field>
+            <field name="model">resume.model</field>
+            <field name="arch" type="xml">
+                <form string="Resume Form">
+                    <sheet>
+                        <div class="mb29 mb-5">
+                            <field name="photo" widget="image" class=" border" style="width:100px;height:100px;"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="resume_name"/>
+                                <field name="name"/>
+                                <field name="father_name"/>
+                                <field name="phone"/>
+                                <field name="creator"/>
+                            </group>
+                            <group>
+                                <field name="category"/>
+                                <field name="date_of_birth"/>
+                                <field name="age"/>
+                                <field name="email"/>
+                                <field name="template" widget="radio" options="{'horizontal': true}"/>
+                                <field name="address"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_resume_tree" model="ir.ui.view">
+            <field name="name">Resume Tree Creation</field>
+            <field name="model">resume.model</field>
+            <field name="arch" type="xml">
+                <tree string="Resume List">
+                    <field name="name"/>
+                    <field name="father_name"/>
+                    <field name="phone"/>
+                    <field name="date_of_birth"/>
+                    <field name="resume_name"/>
+                    <field name="age"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_resume" model="ir.actions.act_window">
+            <field name="name">Resume Creation</field>
+            <field name="res_model">resume.model</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="xml">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new account
+                </p>
+            </field>
+        </record>
+    </data>
+
+    <menuitem id="parent_resume" name="Resume" sequence="1" action="action_resume">
+    </menuitem>
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="portal_home_inherit" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_my_home')]" position="replace">
+            <t t-if="user_id.share == 1 ">
+                <h3>
+                    <span t-esc="user_id.name" class="text-uppercase me-2"/>
+                    <span class="text-uppercase">Documents</span>
+                </h3>
+                <div class="o_portal_docs  mt-5">
+                    <div class="col-md-8 py-1">
+                        <ol class="list-group list-group-numbered">
+                            <t t-foreach="resume" t-as="d">
+                                <a t-attf-href="/detail-resume/{{d.id}}" class="text-decoration-none">
+                                    <li class="list-group-item bg-white d-flex shadow-sm justify-content-between align-items-start"
+                                        style="background-color:#ececec !important;">
+                                        <div class="ms-2 me-auto">
+                                            <div class="fw-bold">
+                                                <t t-if="d.resume_name">
+                                                    <span t-esc="d.resume_name"/>
+                                                </t>
+                                                <t t-else="">Resume</t>
+                                            </div>
+                                            <span t-esc="d.category"/>
+                                        </div>
+                                        <span class="badge bg-primary rounded-0">
+                                            <span t-esc="d.create_date.date()"/>
+                                             <i class="fa fa-calendar" aria-hidden="true"/>
+
+                                        </span>
+                                        <span class="badge bg-danger rounded-0">
+                                            <span t-esc="d.create_date.time().strftime('%H')"/>
+                                            <i class="fa fa-clock-o" aria-hidden="true"/>
+                                        </span>
+                                    </li>
+                                </a>
+                            </t>
+
+                        </ol>
+                    </div>
+                </div>
+            </t>
+            <t t-else="">
+                <h3>
+                    <t t-esc="user_id.name">
+                        <span>Documents</span>
+                    </t>
+
+                </h3>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>
