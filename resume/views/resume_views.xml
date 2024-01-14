@@ -27,6 +27,27 @@
                                 <field name="address"/>
                             </group>
                         </group>
+                        <notebook>
+                            <page name="resume_edu" string="Education">
+                                <field name="edu_ids" nolabel="1">
+                                    <tree>
+                                        <field name="yrs"/>
+                                        <field name="degree"/>
+                                        <field name="college"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="resume_exp" string="Experience">
+                                <field name="exp_ids" nolabel="1">
+                                    <tree>
+                                        <field name="yrs"/>
+                                        <field name="company"/>
+                                        <field name="position"/>
+                                        <field name="description"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

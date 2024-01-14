@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 resume.access_resume_model,access_resume_model,resume.model_resume_model,,1,1,1,1
+resume.access_resume_edu,access_resume_edu,resume.model_resume_edu,base.group_user,1,1,1,1
+resume.access_resume_exp,access_resume_exp,resume.model_resume_exp,base.group_user,1,1,1,1
